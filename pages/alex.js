@@ -7,10 +7,10 @@ const Alex = () => {
   React.useEffect(() => {
     const onMessage = (data) => log('Received: ', data)
     framebus.on('alex', onMessage)
-    framebus.on('both', onMessage)
+    framebus.on('all', onMessage)
     return () => {
       framebus.off('alex', onMessage)
-      framebus.off('both', onMessage)
+      framebus.off('all', onMessage)
     }
   }, [])
 

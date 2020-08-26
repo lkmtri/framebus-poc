@@ -7,10 +7,10 @@ const Bob = () => {
   React.useEffect(() => {
     const onMessage = (data) => log('Received: ', data)
     framebus.on('bob', onMessage)
-    framebus.on('both', onMessage)
+    framebus.on('all', onMessage)
     return () => {
       framebus.off('bob', onMessage)
-      framebus.off('both', onMessage)
+      framebus.off('all', onMessage)
     }
   }, [])
 
@@ -29,7 +29,7 @@ const Bob = () => {
     <>
       <p>Bob</p>
       <button onClick={pingParent}>Ping Parent</button>
-      <iframe style={{ width: '100%', height: 100 }} src='alex' />
+      <iframe style={{ width: '100%', height: 100 }} src='cindy' />
     </>
   )
 }
