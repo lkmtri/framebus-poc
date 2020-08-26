@@ -8,11 +8,11 @@ const useInputState = (initialValue = '') => {
     setValue(e.target.value)
   }, [])
 
-  return { value, onChange }
+  return [value, onChange]
 }
 
 const Index = () => {
-  const { value, onChange } = useInputState()
+  const [value, onChange] = useInputState()
 
   React.useEffect(
     () => framebus.registerService(

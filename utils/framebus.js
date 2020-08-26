@@ -32,6 +32,14 @@ const createFrameBus = () => {
   const framebus = require('framebus')
   const getResponseId = id => `response-${id}`
 
+  framebus.once = (event, fn) => {
+    const cb = (data) => {
+      framebus.off(event, cb)
+      fn(data)
+    }
+    framebus.on(event, cb)
+  }
+
   framebus.on('request', async ({ id, name, data }) => {
     try {
       const response = await services.doService(name, data)
@@ -44,10 +52,7 @@ const createFrameBus = () => {
   framebus.request = (name, data) => {
     const id = v4()
     framebus.emit('request', { id, name, data })
-  
-    return new Promise((res) => {
-      framebus.on(getResponseId(id), (data) => res(data))
-    })
+    return new Promise((res) => framebus.once(getResponseId(id), (data) => res(data)))
   }
 
   framebus.registerService = services.registerService
