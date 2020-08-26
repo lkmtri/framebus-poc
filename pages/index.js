@@ -32,7 +32,7 @@ const Index = () => {
       <button onClick={() => send('bob')}>Send Bob</button>
       <button onClick={() => send('both')}>Send Both</button>
       <iframe style={{ width: '100%', height: 100 }} src='alex' />
-      <iframe style={{ width: '100%', height: 100 }} src='bob' />
+      <iframe style={{ width: '100%', height: 200 }} src='bob' />
     </>
   )
 }
