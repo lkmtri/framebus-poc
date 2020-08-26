@@ -29,7 +29,7 @@ const Bob = () => {
     <>
       <p>Bob</p>
       <button onClick={pingParent}>Ping Parent</button>
-      <iframe style={{ width: '100%', height: 100 }} src='cindy' />
+      <iframe style={{ width: '100%', height: 100 }} src='http://localhost:3002/cindy' />
     </>
   )
 }
