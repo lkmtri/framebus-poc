@@ -1,28 +1,28 @@
 import React from 'react'
-import framebus from '../utils/framebus'
+import bus from '../utils/bus'
 
 const log = (...args) => console.log('[Bob]', ...args)
 
 const Bob = () => {
   React.useEffect(() => {
     const onMessage = (data) => log('Received: ', data)
-    framebus.on('bob', onMessage)
-    framebus.on('all', onMessage)
+    bus.on('bob', onMessage)
+    bus.on('all', onMessage)
     return () => {
-      framebus.off('bob', onMessage)
-      framebus.off('all', onMessage)
+      bus.off('bob', onMessage)
+      bus.off('all', onMessage)
     }
   }, [])
 
   React.useEffect(
-    () => framebus.registerService('bob_pingpong', (data) => {
+    () => bus.registerService('bob_pingpong', (data) => {
       return { from: 'Bob', message: 'Pong', received: data }
     })
     ,[]
   )
 
   const pingParent = async () => {
-    log('Received: ', await framebus.request('pingpong', { from: 'Bob', message: 'Ping' }))
+    log('Received: ', await bus.request('pingpong', { from: 'Bob', message: 'Ping' }))
   }
 
   return (

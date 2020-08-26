@@ -1,5 +1,5 @@
 import React from 'react'
-import framebus from '../utils/framebus'
+import bus from '../utils/bus'
 
 const useInputState = (initialValue = '') => {
   const [value, setValue] = React.useState(initialValue)
@@ -15,7 +15,7 @@ const Index = () => {
   const [value, onChange] = useInputState()
 
   React.useEffect(
-    () => framebus.registerService(
+    () => bus.registerService(
       'pingpong', 
       (data) => new Promise(
         (res) => setTimeout(() => res({ from: 'parent', message: 'Pong', received: data }), 2000))
@@ -23,7 +23,7 @@ const Index = () => {
     []
   )
 
-  const send = (to) => framebus.emit(to, { message: value })
+  const send = (to) => bus.emit(to, { message: value })
 
   return (
     <>
