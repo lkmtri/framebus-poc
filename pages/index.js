@@ -1,6 +1,4 @@
 import React from 'react'
-import { Input } from 'reakit/Input'
-import { Button } from 'reakit/Button'
 import framebus from '../utils/framebus'
 
 const useInputState = (initialValue = '') => {
@@ -29,10 +27,10 @@ const Index = () => {
 
   return (
     <>
-      <Input placeholder="Enter some text" value={value} onChange={onChange} />
-      <Button onClick={() => send('alex')}>Send Alex</Button>
-      <Button onClick={() => send('bob')}>Send Bob</Button>
-      <Button onClick={() => send('both')}>Send Both</Button>
+      <input placeholder="Enter some text" value={value} onChange={onChange} />
+      <button onClick={() => send('alex')}>Send Alex</button>
+      <button onClick={() => send('bob')}>Send Bob</button>
+      <button onClick={() => send('both')}>Send Both</button>
       <iframe style={{ width: '100%', height: 100 }} src='alex' />
       <iframe style={{ width: '100%', height: 100 }} src='bob' />
     </>
