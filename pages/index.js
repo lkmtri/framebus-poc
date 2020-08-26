@@ -14,6 +14,14 @@ const useInputState = (initialValue = '') => {
 const Index = () => {
   const [value, onChange] = useInputState()
 
+  React.useEffect(() => {
+    document.querySelectorAll('iframe').forEach((iframe) => {
+      iframe.addEventListener('load', () => {
+        bus.controller.addChild(iframe)
+      })
+    })
+  }, [])
+
   React.useEffect(
     () => bus.registerService(
       'pingpong', 
