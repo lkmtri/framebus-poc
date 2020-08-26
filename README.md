@@ -1,8 +1,8 @@
 # Setup
 - Install deps by `yarn`
 - `yarn serve-static` to generate static bundle and serve on port 3002
-- `yarn dev` to start dev server on port 3000.
-- Visit http://localhost:3000 and inspect the dev console on browser.
+- `yarn dev` to start dev server on port 3001.
+- Visit http://localhost:3001 and inspect the dev console on browser.
 
 # Framebus
 Framebus is an event bus that works accross frames in a nested browsing context. 
