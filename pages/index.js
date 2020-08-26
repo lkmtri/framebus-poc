@@ -11,10 +11,6 @@ const useInputState = (initialValue = '') => {
   return [value, onChange]
 }
 
-if (typeof window !== 'undefined') {
-  window.name = 'Index'
-}
-
 const Index = () => {
   const [value, onChange] = useInputState()
 
@@ -27,17 +23,13 @@ const Index = () => {
     []
   )
 
-  const send = (to) => bus.emit(to, { message: value })
+  const send = (to) => bus.send({ type: to, message: value })
 
   return (
     <>
       <input placeholder="Enter some text" value={value} onChange={onChange} />
       <button onClick={() => send('alex')}>Send Alex</button>
-      <button onClick={() => send('bob')}>Send Bob</button>
-      <button onClick={() => send('cindy')}>Send Cindy</button>
-      <button onClick={() => send('all')}>Send All</button>
       <iframe style={{ width: '100%', height: 100 }} src='alex' />
-      <iframe style={{ width: '100%', height: 200 }} src='bob' />
     </>
   )
 }

@@ -1,14 +1,9 @@
-import framebus from './framebus'
-import xobus from './xobus'
+const coeb = (() => {
+  // For SSR compatibility
+  if (typeof window !== 'undefined') {
+    const { CrossOriginEventBus } = require('xo-bus')
+    return new CrossOriginEventBus()
+  }
+})()
 
-const modes = {
-  xobus: 'xobus',
-  framebus: 'framebus',
-}
-
-// EDIT THIS TO CHANGE BUS IMPLEMENTATION
-const mode = modes.xobus
-
-const bus = mode === modes.xobus ? xobus : framebus
-
-export default bus
+export default coeb
