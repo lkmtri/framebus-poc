@@ -3,6 +3,10 @@ import bus from '../utils/bus'
 
 const log = (...args) => console.log('[Alex]', ...args)
 
+if (typeof window !== 'undefined') {
+  window.name = 'Alex'
+}
+
 const Alex = () => {
   React.useEffect(() => {
     const onMessage = (data) => log('Received: ', data)
@@ -12,6 +16,14 @@ const Alex = () => {
       bus.off('alex', onMessage)
       bus.off('all', onMessage)
     }
+  }, [])
+
+  React.useEffect(() => {
+    // const clear = setInterval(() => {
+    //   console.log(bus)
+    // }, 2000)
+    // return clear
+    console.log(window.name, window.parent.name)
   }, [])
 
   const pingParent = async () => {

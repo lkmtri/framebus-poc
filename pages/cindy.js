@@ -3,6 +3,9 @@ import bus from '../utils/bus'
 
 const log = (...args) => console.log('[Cindy]', ...args)
 
+if (typeof window !== 'undefined') {
+  window.name = 'Cindy'
+}
 const Cindy = () => {
   React.useEffect(() => {
     const onMessage = (data) => log('Received: ', data)

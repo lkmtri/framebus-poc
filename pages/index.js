@@ -11,6 +11,10 @@ const useInputState = (initialValue = '') => {
   return [value, onChange]
 }
 
+if (typeof window !== 'undefined') {
+  window.name = 'Index'
+}
+
 const Index = () => {
   const [value, onChange] = useInputState()
 
